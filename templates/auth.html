@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule</title>
+    <link rel="stylesheet" href={% static "css/auth.css" %}?{% now " U" %}>
+</head>
+<body>
+<h2>Аутентифікація</h2>
+<div class="wrap">
+    <form method="post">
+        {% csrf_token %}
+        {{ loginForm.as_p }}
+        <br>
+        <button class="action">Login</button>
+    </form>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="title3">
+            © 2023 Unique School Schedule. Усі Права Захищені.
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+
+</body>
+</html>

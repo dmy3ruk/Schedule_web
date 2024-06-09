@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassFinder Schedule</title>
+    <link rel="stylesheet" href={% static 'css/home.css' %}>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div class="logo">Богородчанський ліцей №2</div>
+    <div class="search-container">
+        <button class="create-button">Адмін</button>
+    </div>
+</header>
+<div class="sidebar">
+    <button class="sidebar-btn active">Розклад</button>
+    <button class="sidebar-btn" id="button2">Календар</button>
+</div>
+<main class="main-content">
+    <section class="week-schedule">
+        <h1>Цього тижня</h1>
+
+        <div class="week-days">
+            <span class="day" id="day">День</span>
+            <span class="day active" >Тиждень</span>
+            <span class="day" id="month">Місяць</span>
+        </div>
+        <div class="searches">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="class_name" class="search-bar" placeholder="Клас">
+                <input type="text" name="teacher_name" class="search-bar" placeholder="Вчитель">
+                <button class="search-bar" id="form1">Пошук</button>
+            </form>
+
+        </div>
+{% if numbers_lesson != null %}
+       <div class="filter-buttons">
+            <button>{{ numbers_lesson}} уроків цього тижня</button>
+        </div>
+{% endif %}
+    </section>
+    <section class="today-schedule">
+          {% for lesson in lessons %}
+              <h2>{{ lesson.day_of_week|date:"d.m" }}</h2>
+       
+                <div class="class-item"> 
+                  
+                    <div class="class-icon class-icon-english"></div>
+                    <div class="class-details">
+                        <p class="class-name">{{ lesson.subject }}</p>
+                        <p class="class-type">{{ lesson.teacher }}</p>
+                        <p class="class-type">{{ lesson.start_time|time:"H:i" }}-{{ lesson.end_time|time:"H:i" }}</p>
+                    </div> 
+                </div>
+       {% endfor %}
+    </section>
+</main>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById('button2').addEventListener('click', function () {
+        window.location.href = "{% url 'schedule' %}";
+    });
+    document.getElementById('day').addEventListener('click', function () {
+        window.location.href = "{% url '' %}";
+    });
+    document.getElementById('form1').addEventListener('click', function () {
+        window.location.reload();
+    });
+    document.getElementById('month').addEventListener('click', function () {
+        window.location.href = "{% url 'month' %}";
+    });
+</script>
+</html>

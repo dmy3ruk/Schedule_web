@@ -1,0 +1,242 @@
+body {
+    font-family: Jost, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    border: 1px solid #f0f0f0;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.create-button {
+    margin-left: 10px;
+    padding: 8px 20px;
+    color: #14cb3e;
+    background-color: #fff;
+    border: 1px solid #14cb3e;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+.schedule {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.schedule .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.schedule .header h2 {
+    font-size: 50px;
+    margin: 30px 100px 10px 20px;
+
+}
+
+.schedule .header .new-event {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.calendar {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.litepicker {
+    width: 100%;
+}
+
+.events {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.event-day {
+    margin-bottom: 20px;
+}
+
+.event-day h3 {
+    margin-top: 0;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.event img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.event-details {
+    flex-grow: 1;
+}
+
+.event-details h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.event-details p {
+    margin: 5px 0 0;
+    color: #666;
+}
+.container__months.columns-2 {
+    margin: auto;
+    /* height: 230px; */
+    /* perspective: none; */
+    box-shadow: none;
+    --litepicker-is-start-color-bg: #14cb3e;
+    --litepicker-is-end-color-bg: #14cb3e;
+    --litepicker-is-in-range-color: rgba(96, 241, 59, 0.67);
+    --litepicker-day-color-hover: rgba(66, 66, 66, 0.34);
+    font-size: 17px;
+    --litepicker-day-width: 40px;
+}
+.litepicker .container__months.columns-2 {
+    width: calc((var(--litepicker-month-width) * 2) + 50px);
+}
+.today-schedule {
+    margin-left: 250px;
+    margin-top: 50px;
+}
+.filter-buttons button:hover {
+    background-color: #e9ecef;
+}
+
+.today-schedule {
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.class-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.class-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ced4da;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.class-icon-english {
+    background-image: url('path/to/english-icon.png');
+    background-size: cover;
+}
+
+.class-icon-math {
+    background-image: url('path/to/math-icon.png');
+    background-size: cover;
+}
+
+.class-icon-lunch {
+    background-image: url('path/to/lunch-icon.png');
+    background-size: cover;
+}
+
+.class-icon-history {
+    background-image: url('path/to/history-icon.png');
+    background-size: cover;
+}
+
+.class-icon-gym {
+    background-image: url('path/to/gym-icon.png');
+    background-size: cover;
+}
+
+.class-details .class-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.class-details .class-type {
+    margin-bottom: 1px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+.sidebar {
+    width: 200px;
+    background-color: #fff;
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.sidebar-btn {
+    width: 90%;
+    padding: 10px 20px;
+    margin: -7px 0px 10px 40px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #6c757d;
+    margin-right: 25% ;
+
+}
+
+.sidebar-btn.active, .sidebar-btn:hover {
+    background-color: white;
+    border: 1px solid #14cb3e;
+    color: #000;
+    /* border-left: 3px solid #28a745; */
+    border-radius: 10px;
+}

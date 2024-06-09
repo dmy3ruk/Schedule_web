@@ -1,0 +1,234 @@
+.group-6,
+.group-6 * {
+  box-sizing: border-box;
+}
+.group-6 {
+  height: 832px;
+  position: relative;
+}
+.mac-book-air-1 {
+  background: #ffffff;
+  width: 1279px;
+  height: 832px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.group-1 {
+  position: absolute;
+  inset: 0;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 520px;
+  position: absolute;
+  left: 180px;
+  top: 353px;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 520px;
+  position: relative;
+  overflow: hidden;
+}
+.title {
+  color: #000000;
+  text-align: left;
+  font-family: "RadioCanada-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+}
+.textfield {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  padding: 8px 12px 8px 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.text {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+  height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.row2 {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 520px;
+  position: absolute;
+  left: 180px;
+  top: 462px;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.primary {
+  background: #3e5787;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 240px;
+  position: relative;
+}
+.title2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  position: relative;
+}
+.row3 {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 520px;
+  position: absolute;
+  left: 180px;
+  top: 269px;
+}
+.vector-201 {
+  height: 0px;
+  position: absolute;
+  right: 26px;
+  left: -26px;
+  bottom: 1395px;
+  overflow: visible;
+}
+.vector-200 {
+  height: 0px;
+  position: absolute;
+  right: 26px;
+  left: -26px;
+  bottom: 1199px;
+  overflow: visible;
+}
+.section {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  width: 1280px;
+  height: 84px;
+  position: absolute;
+  left: -30px;
+  top: 600px;
+  overflow: hidden;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1056px;
+  height: 100px;
+  position: relative;
+}
+.title3 {
+  color: #424242;
+  text-align: center;
+  font-family: "RadioCanada-Regular", sans-serif;
+  font-size: 19px;
+  line-height: 28px;
+  font-weight: 400;
+  width: 485px;
+}
+.title4 {
+  color: #000000;
+  text-align: center;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  width: 447px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h2{
+  color: #000000;
+  font-family: "RadioCanada-Bold", sans-serif;
+  font-size: 40px;
+  position: absolute;
+  left: 130px;
+  top: 150px;
+  width: 376px;
+  height: 48px;
+}
+input {
+  width: 550px;
+  height: 36px;
+  padding-left: 40px;
+  font-size: 18px;
+  border-radius: 9px;
+  border-color: rgba(66, 66, 66, 0.2);
+  margin-top: 5px;
+  background-color: rgb(255, 255, 255);
+}
+.wrap{
+  margin-top: 269px;
+  margin-left: 100px;
+}
+.action{
+  width: 240px;
+  height: 50px;
+  border-radius: 10px; /* Заокруглення кутів */
+  border: none; /* Видаляємо рамку */
+  background-color: #3E5787;
+  font-size: 20px;
+  font-family: "RadioCanada-Medium", sans-serif;
+  color: white;
+}

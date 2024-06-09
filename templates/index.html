@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css">
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+    <link rel="stylesheet" href={% static 'css/index.css' %}>
+</head>
+<body>
+<header>
+   <div class="header">
+        <div class="logo">Богородчанський ліцей №2</div>
+        <div class="search-container">
+            <button class="create-button">Адмін</button>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="sidebar">
+        <button class="sidebar-btn" id="button1">Розклад</button>
+        <button class="sidebar-btn active">Календар</button>
+    </div>
+    <section class="schedule">
+        <div class="calendar" id="calendar"></div>
+        <div class="events">
+            <section class="today-schedule">
+                {% for lesson in lessons %}
+                <h2>{{ lesson.day_of_week }}</h2>
+                <div class="class-item">
+                    <div class="class-icon class-icon-english"></div>
+                    <div class="class-details">
+                        <p class="class-name">{{ lesson.subject }}</p>
+                        <p class="class-type">Учитель</p>
+                        <p class="class-type">9:00-10:00</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </div>
+    </section>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const picker = new Litepicker({
+            element: document.getElementById('calendar'),
+            inlineMode: true,
+            numberOfMonths: 2,
+            numberOfColumns: 2,
+            singleMode: false,
+        });
+    });
+
+    document.getElementById('button1').addEventListener('click', function() {
+        window.location.href = "{% url '' %}"; // Replace with your target URL
+    });
+</script>
+</body>
+</html>
