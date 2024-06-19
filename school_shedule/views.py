@@ -12,10 +12,7 @@ from school_shedule.models import Lesson
 
 
 # Create your views here.
-class ScheduleView(View):
-    def get(self, request):
 
-        return render(request, 'index.html')
 
 
 class AuthView(View):
@@ -99,4 +96,15 @@ class HomeMonth(View):
             'grouped_lessons': grouped_lessons,
             'sort': sort
         }
-        return render(request, 'home_month.html', context)
+        return render(request, 'home.html', context)
+
+class ScheduleView(View):
+    def get(self, request):
+        return render(request, 'index.html')
+    def post(self, request, *args, **kwargs):
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        print(start_date, end_date)
+        return render(request, 'index.html')
+
+

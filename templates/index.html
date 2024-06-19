@@ -9,13 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css">
-    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
-    <link rel="stylesheet" href={% static 'css/index.css' %}>
+    <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
 <header>
-   <div class="header">
+    <div class="header">
         <div class="logo">Богородчанський ліцей №2</div>
         <div class="search-container">
             <button class="create-button">Адмін</button>
@@ -32,21 +32,23 @@
         <div class="events">
             <section class="today-schedule">
                 {% for lesson in lessons %}
-                <h2>{{ lesson.day_of_week }}</h2>
-                <div class="class-item">
-                    <div class="class-icon class-icon-english"></div>
-                    <div class="class-details">
-                        <p class="class-name">{{ lesson.subject }}</p>
-                        <p class="class-type">Учитель</p>
-                        <p class="class-type">9:00-10:00</p>
+                    <h2>{{ lesson.day_of_week }}</h2>
+                    <div class="class-item">
+                        <div class="class-icon class-icon-english"></div>
+                        <div class="class-details">
+                            <p class="class-name">{{ lesson.subject }}</p>
+                            <p class="class-type">Учитель</p>
+                            <p class="class-type">9:00-10:00</p>
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
             </section>
         </div>
     </section>
 </main>
-
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const picker = new Litepicker({
@@ -55,11 +57,29 @@
             numberOfMonths: 2,
             numberOfColumns: 2,
             singleMode: false,
-        });
-    });
+            autoApply: true,
+            onSelect: function (date1, date2) {
+                var start = date1.format('YYYY-MM-DD');
+                var end = date2.format('YYYY-MM-DD');
 
-    document.getElementById('button1').addEventListener('click', function() {
-        window.location.href = "{% url '' %}"; // Replace with your target URL
+                $.ajax({
+                    url: {% url "schedule" %}, // Ensure this matches your Django URL pattern name
+                    type: 'POST',
+                    data: {
+                        'start_day': start,
+                        'end_day': end,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function (response) {
+                        window.location.reload();
+                        console.log("Success:", response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error:", xhr.responseText);
+                    }
+                });
+            }
+        });
     });
 </script>
 </body>
