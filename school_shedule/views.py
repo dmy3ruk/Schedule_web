@@ -1,62 +1,35 @@
 import calendar
-from datetime import datetime, timedelta, timezone
-from operator import attrgetter
+from datetime import datetime, timedelta
 
-from django.contrib import auth
-from django.contrib.auth import authenticate
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 
-from school_shedule.forms import LoginForm
 from school_shedule.models import Lesson
-
-
-# Create your views here.
-
-
-
-class AuthView(View):
-    def get(self, request):
-        form = LoginForm()
-        return render(request, 'auth.html', {'loginForm': form})
-
-    def post(self, request):
-        form = LoginForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                auth.login(request, user)
-                return redirect('home')  # Замість 'index', переконайтеся, що маршрут 'home' правильно налаштований
-        return render(request, 'auth.html', {'loginForm': form})
 
 
 class HomeMonth(View):
     def get(self, request):
-        tab = request.GET.get('tab', 'day')  # Default to 'month' if no tab is provided
+        tab = request.GET.get('tab', 'day')
         return self.render_schedule(request, tab)
 
     def post(self, request, *args, **kwargs):
-        tab = request.GET.get('tab', 'day')  # Get the active tab from the query parameter
+        tab = request.GET.get('tab', 'day')  # Отримати активне значення tab
         return self.render_schedule(request, tab)
 
     def render_schedule(self, request, tab):
         sort = ''
-        # Update the session variables if new values are posted
         if 'class_name' in request.POST:
             request.session['class'] = request.POST.get('class_name')
-
         if 'teacher_name' in request.POST:
-
             request.session['teacher'] = request.POST.get('teacher_name')
             sort = 'teacher'
-        # Get the class and teacher names from the session, with default empty strings
+        # отримуємо з сесії значення полів які відповідають за вчителя та клас
         class_name = request.session.get('class', '')
         teacher_name = request.session.get('teacher', '')
-        # Filter lessons based on class and teacher names
+
         numbers_lesson = ''
         lessons = Lesson.objects.all()
+        # якщо сесія не порожня, товідбувається фільтрація з цими ж даними
         if class_name:
             lessons = lessons.filter(class_name=class_name)
             numbers_lesson = lessons.count()
@@ -66,7 +39,7 @@ class HomeMonth(View):
             numbers_lesson = lessons.count()
         current_date = datetime.now()
 
-        # Filter lessons based on the selected tab (month, week, or day)
+        # Фільтрування уроків якщо сесія class_name та teacher_name порожня та залежно від вибраного (місяць, день, тиждень)
         if tab == 'month':
             first_day = current_date.replace(day=1)
             last_day = current_date.replace(day=calendar.monthrange(current_date.year, current_date.month)[1])
@@ -80,7 +53,6 @@ class HomeMonth(View):
         elif tab == 'day':
             lessons_all = lessons.filter(day_of_week=current_date)
             numbers_lesson = lessons_all.count()
-
 
         grouped_lessons = []
         sorted_lessons = sorted(lessons_all, key=lambda x: x.start_time)
@@ -98,13 +70,13 @@ class HomeMonth(View):
         }
         return render(request, 'home.html', context)
 
+
 class ScheduleView(View):
     def get(self, request):
         return render(request, 'index.html')
+
     def post(self, request, *args, **kwargs):
         start_date = request.POST.get('start_date')
         end_date = request.POST.get('end_date')
         print(start_date, end_date)
         return render(request, 'index.html')
-
-

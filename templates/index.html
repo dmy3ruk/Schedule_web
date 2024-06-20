@@ -11,14 +11,14 @@
           rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}?{% now ''%}">
 </head>
 <body>
 <header>
     <div class="header">
         <div class="logo">Богородчанський ліцей №2</div>
         <div class="search-container">
-            <button class="create-button">Адмін</button>
+            <button class="create-button" id="adm">Адмін</button>
         </div>
     </div>
 </header>
@@ -81,6 +81,12 @@
             }
         });
     });
+    document.getElementById('adm').onclick = function () {
+        window.location.href = '/admin/login/'
+    }
+    document.getElementById('button1').onclick = function () {
+        window.location.href = '/ '
+    }
 </script>
 </body>
 </html>

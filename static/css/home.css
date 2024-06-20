@@ -64,8 +64,8 @@ body {
 
 .sidebar-btn.active, .sidebar-btn:hover {
     background-color: white;
-    border: 1px solid var(--shamrock-green);
-    color: #000;
+    border: 1px solid var(--butterscotch);
+    color: var(--butterscotch);
     /* border-left: 3px solid #28a745; */
     border-radius: 10px;
 }
@@ -90,10 +90,11 @@ body {
 .create-button {
     margin-left: 10px;
     padding: 8px 20px;
-    color: var(--butterscotch);
+
     background-color: #fff;
     border: 1px solid var(--butterscotch);
     border-radius: 10px;
+    color: var(--butterscotch);
     cursor: pointer;
 }
 
